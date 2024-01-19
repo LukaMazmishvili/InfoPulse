@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/newsFragment"
+        android:title="News"
+        android:iconTint="@color/black"/>
+
+    <item
+        android:id="@+id/sourcesFragment"
+        android:title="Sources"
+        android:iconTint="@color/black"/>
+
+    <item
+        android:id="@+id/searchFragment"
+        android:title="Search"
+        android:iconTint="@color/black" />
+
+    <item
+        android:id="@+id/callsFragment"
+        android:title="Saved"
+        android:iconTint="@color/black" />
+
+</menu>
