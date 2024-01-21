@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">InfoPulse</string>
+    <string name="source_author">Source, Author</string>
+    <string name="published_date">Published Date</string>
+    <string name="content">content</string>
+    <string name="title">Title</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

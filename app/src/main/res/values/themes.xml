@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.InfoPulse" parent="Base.Theme.InfoPulse" />
+
+    <style name="RoundedImages" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">16dp</item>
+    </style>
 </resources>
