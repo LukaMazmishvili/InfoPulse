@@ -4,21 +4,25 @@
     <item
         android:id="@+id/newsFragment"
         android:title="News"
+        android:icon="@drawable/ic_news"
         android:iconTint="@color/black"/>
 
     <item
         android:id="@+id/sourcesFragment"
         android:title="Sources"
+        android:icon="@drawable/ic_sources"
         android:iconTint="@color/black"/>
 
     <item
         android:id="@+id/searchFragment"
         android:title="Search"
+        android:icon="@drawable/ic_search"
         android:iconTint="@color/black" />
 
     <item
         android:id="@+id/callsFragment"
         android:title="Saved"
+        android:icon="@drawable/ic_saved"
         android:iconTint="@color/black" />
 
 </menu>

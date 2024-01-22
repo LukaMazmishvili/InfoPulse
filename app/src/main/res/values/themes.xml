@@ -10,4 +10,11 @@
     <style name="RoundedImages" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerSize">16dp</item>
     </style>
+
+    <style name="NavBarStyle" parent="ShapeAppearance.MaterialComponents.SmallComponent" >
+
+        <item name="cornerRadius">24dp</item>
+        <item name="elevation">2dp</item>
+
+    </style>
 </resources>

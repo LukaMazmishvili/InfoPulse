@@ -1,6 +1,8 @@
 package com.example.infopulse.data.remote.model
 
 data class ArticlesModelDto(
+    val status: String,
+    val id: Long,
     val articles: List<Article>
 ) {
     data class Article(
@@ -9,7 +11,7 @@ data class ArticlesModelDto(
         val title: String,
         val description: String,
         val url: String,
-        val urlToImage: String,
+        val urlToImage: String?,
         val publishedAt: String,
         val content: String
     ) {
