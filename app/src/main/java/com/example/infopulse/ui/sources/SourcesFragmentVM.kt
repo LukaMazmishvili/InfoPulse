@@ -1,11 +1,11 @@
-package com.example.infopulse.ui.newsFragment
+package com.example.infopulse.ui.sources
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.infopulse.common.Resource
-import com.example.infopulse.data.remote.model.ArticlesModelDto
-import com.example.infopulse.domain.repository.ArticlesRepository
+import com.example.infopulse.data.remote.model.SourcesModelDto
+import com.example.infopulse.domain.repository.SourcesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,26 +13,27 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewsFragmentVM @Inject constructor(private val articlesRepository: ArticlesRepository) :
+class SourcesFragmentVM @Inject constructor(private val sourcesRepository: SourcesRepository) :
     ViewModel() {
 
-    private val _getArticlesState = MutableStateFlow(ArticlesApiState())
-    val getArticlesState = _getArticlesState.asStateFlow()
 
-    fun getArticles() {
+    private val _getSourcesState = MutableStateFlow(ArticlesApiState())
+    val getSourcesState = _getSourcesState.asStateFlow()
+
+    fun getSources() {
         viewModelScope.launch {
-            _getArticlesState.value = getArticlesState.value.copy(isLoading = true)
-            when (val response = articlesRepository.fetchArticles()) {
+            _getSourcesState.value = _getSourcesState.value.copy(isLoading = true)
+            when (val response = sourcesRepository.fetchSources()) {
                 is Resource.Success -> {
-                    _getArticlesState.value = getArticlesState.value.copy(
+                    _getSourcesState.value = _getSourcesState.value.copy(
                         isLoading = false,
-                        data = response.data.articles,
+                        data = response.data.sources,
                     )
                     Log.d("CheckIfCodeWorks", "getChats: $response")
                 }
 
                 is Resource.Error -> {
-                    _getArticlesState.value = _getArticlesState.value.copy(
+                    _getSourcesState.value = _getSourcesState.value.copy(
                         isLoading = false,
                         error = response.errorMsg
                     )
@@ -40,7 +41,7 @@ class NewsFragmentVM @Inject constructor(private val articlesRepository: Article
                 }
 
                 is Resource.Loading -> {
-                    _getArticlesState.value = _getArticlesState.value.copy(
+                    _getSourcesState.value = _getSourcesState.value.copy(
                         isLoading = true
                     )
                     Log.d("CheckIfCodeWorks", "getChats: $response")
@@ -52,7 +53,8 @@ class NewsFragmentVM @Inject constructor(private val articlesRepository: Article
 
     data class ArticlesApiState(
         val isLoading: Boolean = false,
-        val data: List<ArticlesModelDto.Article>? = null,
+        val data: List<SourcesModelDto.Source>? = null,
         val error: String = ""
     )
+
 }

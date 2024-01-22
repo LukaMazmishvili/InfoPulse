@@ -1,6 +1,7 @@
 package com.example.infopulse.di
 
 import com.example.infopulse.data.remote.services.ArticlesService
+import com.example.infopulse.data.remote.services.SourcesService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,8 +15,15 @@ import javax.inject.Singleton
 object ServiceModule {
 
     @Provides
+    @Singleton
     fun provideArticlesService(retrofit: Retrofit): ArticlesService {
         return retrofit.create(ArticlesService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSourcesService(retrofit: Retrofit): SourcesService {
+        return retrofit.create(SourcesService::class.java)
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.infopulse.ui.newsFragment
+package com.example.infopulse.ui.news
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

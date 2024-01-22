@@ -7,7 +7,13 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.example.infopulse.ui.newsFragment.NewsFragment"
+        android:name="com.example.infopulse.ui.news.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" />
+
+    <fragment
+        android:id="@+id/sourcesFragment"
+        android:name="com.example.infopulse.ui.sources.SourcesFragment"
+        android:label="fragment_sources"
+        tools:layout="@layout/fragment_sources" />
 </navigation>

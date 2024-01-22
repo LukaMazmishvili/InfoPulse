@@ -6,4 +6,8 @@
     <string name="title">Title</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="source_name">Source Name</string>
+    <string name="category">Category</string>
+    <string name="country_language">country/language</string>
+    <string name="description">Description</string>
 </resources>
