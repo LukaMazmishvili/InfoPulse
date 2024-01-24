@@ -17,7 +17,7 @@ class SourcesFragmentVM @Inject constructor(private val sourcesRepository: Sourc
     ViewModel() {
 
 
-    private val _getSourcesState = MutableStateFlow(ArticlesApiState())
+    private val _getSourcesState = MutableStateFlow(SourcesApiState())
     val getSourcesState = _getSourcesState.asStateFlow()
 
     fun getSources() {
@@ -51,7 +51,7 @@ class SourcesFragmentVM @Inject constructor(private val sourcesRepository: Sourc
 
     }
 
-    data class ArticlesApiState(
+    data class SourcesApiState(
         val isLoading: Boolean = false,
         val data: List<SourcesModelDto.Source>? = null,
         val error: String = ""

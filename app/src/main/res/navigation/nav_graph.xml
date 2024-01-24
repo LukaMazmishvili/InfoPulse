@@ -9,11 +9,29 @@
         android:id="@+id/newsFragment"
         android:name="com.example.infopulse.ui.news.NewsFragment"
         android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_newsFragment_to_articlesFragment"
+            app:destination="@id/articlesFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/sourcesFragment"
         android:name="com.example.infopulse.ui.sources.SourcesFragment"
         android:label="fragment_sources"
         tools:layout="@layout/fragment_sources" />
+    <fragment
+        android:id="@+id/articlesFragment"
+        android:name="com.example.infopulse.ui.article.ArticlesFragment"
+        android:label="fragment_articles"
+        tools:layout="@layout/fragment_articles" >
+        <argument
+            android:name="articleData"
+            app:argType="com.example.infopulse.data.remote.model.Article" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="com.example.infopulse.ui.saved.SavedFragment"
+        android:label="fragment_saved"
+        tools:layout="@layout/fragment_saved" />
 </navigation>

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.infopulse.common.Resource
+import com.example.infopulse.data.remote.model.Article
 import com.example.infopulse.data.remote.model.ArticlesModelDto
 import com.example.infopulse.domain.repository.ArticlesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -28,31 +29,27 @@ class NewsFragmentVM @Inject constructor(private val articlesRepository: Article
                         isLoading = false,
                         data = response.data.articles,
                     )
-                    Log.d("CheckIfCodeWorks", "getChats: $response")
                 }
 
                 is Resource.Error -> {
-                    _getArticlesState.value = _getArticlesState.value.copy(
+                    _getArticlesState.value = getArticlesState.value.copy(
                         isLoading = false,
                         error = response.errorMsg
                     )
-                    Log.d("CheckIfCodeWorks", "getChats: $response")
                 }
 
                 is Resource.Loading -> {
-                    _getArticlesState.value = _getArticlesState.value.copy(
+                    _getArticlesState.value = getArticlesState.value.copy(
                         isLoading = true
                     )
-                    Log.d("CheckIfCodeWorks", "getChats: $response")
                 }
             }
         }
-
     }
 
     data class ArticlesApiState(
         val isLoading: Boolean = false,
-        val data: List<ArticlesModelDto.Article>? = null,
+        val data: List<Article>? = null,
         val error: String = ""
     )
 }

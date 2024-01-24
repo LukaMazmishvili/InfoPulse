@@ -3,6 +3,9 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+//    id("kotlin-android-extensions")
+    id("kotlin-parcelize")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -64,8 +67,11 @@ dependencies {
 
     implementation("androidx.cardview:cardview:1.0.0")
 
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     implementation("com.google.android.material:material:1.11.0")
+
+    implementation("androidx.viewpager2:viewpager2:1.1.0-beta02")
 
 }
 

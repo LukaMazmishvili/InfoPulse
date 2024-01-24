@@ -20,7 +20,7 @@
         android:iconTint="@color/black" />
 
     <item
-        android:id="@+id/callsFragment"
+        android:id="@+id/savedFragment"
         android:title="Saved"
         android:icon="@drawable/ic_saved"
         android:iconTint="@color/black" />

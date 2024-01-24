@@ -10,4 +10,7 @@
     <string name="category">Category</string>
     <string name="country_language">country/language</string>
     <string name="description">Description</string>
+    <string name="author">Author</string>
+    <string name="see_in_browser">See In Browser</string>
+    <string name="save_news">Save News</string>
 </resources>

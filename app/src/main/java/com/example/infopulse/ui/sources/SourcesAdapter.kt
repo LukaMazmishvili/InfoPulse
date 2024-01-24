@@ -5,17 +5,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.infopulse.data.remote.model.ArticlesModelDto
 import com.example.infopulse.data.remote.model.SourcesModelDto
 import com.example.infopulse.databinding.ItemSourceBinding
+import com.example.infopulse.domain.repository.SourcesRepository
+import com.example.infopulse.utils.GlobalItemDiffUtil
 
 class SourcesAdapter :
-    ListAdapter<SourcesModelDto.Source, SourcesAdapter.ViewHolder>(SourcesDiffUtil()) {
+    ListAdapter<SourcesModelDto.Source, SourcesAdapter.ViewHolder>(GlobalItemDiffUtil<SourcesModelDto.Source>()) {
 
-    inner class ViewHolder(binding: ItemSourceBinding) : RecyclerView.ViewHolder(binding.root) {
-        val category = binding.tvCategory
-        val name = binding.tvSourceName
-        val description = binding.tvDescription
-        val countryAndLanguage = binding.tvCountryAndLang
+    inner class ViewHolder(private val binding: ItemSourceBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item : SourcesModelDto.Source){
+            with(binding){
+                tvCategory.text = item.category
+                tvSourceName.text = item.name
+                tvDescription.text = item.description
+                tvCountryAndLang.text = "${item.country}/${item.language}"
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
@@ -26,29 +33,23 @@ class SourcesAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-
-        with(holder) {
-            category.text = item.category
-            name.text = item.name
-            description.text = item.description
-            countryAndLanguage.text = "${item.country}/${item.language}"
-        }
+        holder.bind(item)
     }
 
-    class SourcesDiffUtil() : DiffUtil.ItemCallback<SourcesModelDto.Source>() {
-        override fun areItemsTheSame(
-            oldItem: SourcesModelDto.Source,
-            newItem: SourcesModelDto.Source
-        ): Boolean {
-            return oldItem === newItem
-        }
-
-        override fun areContentsTheSame(
-            oldItem: SourcesModelDto.Source,
-            newItem: SourcesModelDto.Source
-        ): Boolean {
-            return oldItem == newItem
-        }
-    }
+//    class SourcesDiffUtil() : DiffUtil.ItemCallback<SourcesModelDto.Source>() {
+//        override fun areItemsTheSame(
+//            oldItem: SourcesModelDto.Source,
+//            newItem: SourcesModelDto.Source
+//        ): Boolean {
+//            return oldItem === newItem
+//        }
+//
+//        override fun areContentsTheSame(
+//            oldItem: SourcesModelDto.Source,
+//            newItem: SourcesModelDto.Source
+//        ): Boolean {
+//            return oldItem == newItem
+//        }
+//    }
 
 }
