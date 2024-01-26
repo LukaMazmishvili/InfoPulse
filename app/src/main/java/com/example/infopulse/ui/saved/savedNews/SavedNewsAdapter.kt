@@ -1,25 +1,25 @@
-package com.example.infopulse.ui.news
+package com.example.infopulse.ui.saved.savedNews
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.infopulse.data.remote.model.Article
 import com.example.infopulse.databinding.ItemArticleBinding
+import com.example.infopulse.databinding.ItemSavedArticleBinding
 import com.example.infopulse.extensions.formatDate
 import com.example.infopulse.extensions.uploadImage
 import com.example.infopulse.utils.GlobalItemDiffUtil
 
-class ArticlesAdapter() :
-    ListAdapter<Article, ArticlesAdapter.ViewHolder>(GlobalItemDiffUtil<Article>()) {
+class SavedNewsAdapter() :
+    ListAdapter<Article, SavedNewsAdapter.ViewHolder>(GlobalItemDiffUtil<Article>()) {
 
 
     var onItemClick: ((Article) -> Unit)? = null
-    var saveItemClicked: ((Article) -> Unit)? = null
+    var onDeleteItemClicked: ((Article) -> Unit)? = null
 
-    inner class ViewHolder(private val binding: ItemArticleBinding) :
+    inner class ViewHolder(private val binding: ItemSavedArticleBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Article) {
@@ -34,14 +34,14 @@ class ArticlesAdapter() :
                 Log.d("ItemInAdapter", "onBindViewHolder: $item")
                 onItemClick?.invoke(item)
             }
-            binding.btnSaveNews.setOnClickListener {
-                saveItemClicked?.invoke(item)
+            binding.btnRemoveNews.setOnClickListener {
+                onDeleteItemClicked?.invoke(item)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        ItemArticleBinding.inflate(
+        ItemSavedArticleBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
     )

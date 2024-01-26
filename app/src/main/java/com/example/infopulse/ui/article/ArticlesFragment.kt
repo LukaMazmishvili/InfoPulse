@@ -1,17 +1,12 @@
 package com.example.infopulse.ui.article
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.infopulse.R
 import com.example.infopulse.base.BaseFragment
 import com.example.infopulse.databinding.FragmentArticlesBinding
-import com.example.infopulse.extentions.formatDate
+import com.example.infopulse.extensions.formatDate
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ArticlesFragment : BaseFragment<FragmentArticlesBinding>(FragmentArticlesBinding::inflate) {

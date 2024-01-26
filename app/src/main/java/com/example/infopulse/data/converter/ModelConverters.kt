@@ -6,7 +6,7 @@ import com.example.infopulse.data.remote.model.Article
 
 fun convertArticleToNewsEntity(article: Article): NewsEntity {
     return NewsEntity(
-        source = article.source.name,
+        source = article.source?.name ?: "",
         author = article.author,
         title = article.title,
         description = article.description,

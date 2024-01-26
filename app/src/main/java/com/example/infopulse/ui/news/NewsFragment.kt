@@ -28,8 +28,6 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(
 
     override fun started() {
 
-        viewModel.getArticles()
-
         requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavBar).visibility =
             View.VISIBLE
 
@@ -48,6 +46,10 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(
                 )
             )
         }
+
+        articlesAdapter.saveItemClicked = {
+            viewModel.saveArticle(it)
+        }
     }
 
     private fun setUpViews() {
@@ -58,7 +60,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(
 
     override fun observer() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 viewModel.getArticlesState.collect {
                     updateUi(it)
                 }

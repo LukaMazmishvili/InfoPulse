@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.infopulse.common.Resource
+import com.example.infopulse.data.local.DBHelper
 import com.example.infopulse.data.remote.model.Article
 import com.example.infopulse.data.remote.model.ArticlesModelDto
 import com.example.infopulse.domain.repository.ArticlesRepository
@@ -14,13 +15,24 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewsFragmentVM @Inject constructor(private val articlesRepository: ArticlesRepository) :
+class NewsFragmentVM @Inject constructor(
+    private val articlesRepository: ArticlesRepository,
+    private val db: DBHelper
+) :
     ViewModel() {
 
     private val _getArticlesState = MutableStateFlow(ArticlesApiState())
     val getArticlesState = _getArticlesState.asStateFlow()
 
-    fun getArticles() {
+    init {
+        getArticles()
+    }
+
+    fun saveArticle(item: Article) {
+        db.insertNews(item)
+    }
+
+    private fun getArticles() {
         viewModelScope.launch {
             _getArticlesState.value = getArticlesState.value.copy(isLoading = true)
             when (val response = articlesRepository.fetchArticles()) {

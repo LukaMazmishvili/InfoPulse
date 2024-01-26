@@ -11,8 +11,8 @@ import javax.inject.Inject
 @HiltViewModel
 class SavedViewModel @Inject constructor(private val db: DBHelper) : ViewModel() {
 
-    fun saveNews(model : Article) {
+    fun readSavedArticles() = db.getAllNews()
 
-    }
+    fun deleteArticle(item: Article) = db.deleteNews(item)
 
 }
