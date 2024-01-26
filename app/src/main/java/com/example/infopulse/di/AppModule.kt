@@ -1,9 +1,11 @@
 package com.example.infopulse.di
 
+import android.content.Context
 import com.example.infopulse.common.Endpoints.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -21,6 +23,11 @@ object AppModule {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    @Provides
+    fun provideApplicationContext(@ApplicationContext context: Context): Context {
+        return context
     }
 
 }
