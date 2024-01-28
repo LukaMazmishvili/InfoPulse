@@ -4,7 +4,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.infopulse.common.Resource
+import com.example.infopulse.data.local.DBHelper
 import com.example.infopulse.data.remote.model.SourcesModelDto
+import com.example.infopulse.di.DBModule
 import com.example.infopulse.domain.repository.SourcesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +15,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SourcesFragmentVM @Inject constructor(private val sourcesRepository: SourcesRepository) :
+class SourcesFragmentVM @Inject constructor(
+    private val sourcesRepository: SourcesRepository,
+    private val db: DBHelper
+) :
     ViewModel() {
 
 
@@ -49,6 +54,10 @@ class SourcesFragmentVM @Inject constructor(private val sourcesRepository: Sourc
             }
         }
 
+    }
+
+    fun saveSource(item: SourcesModelDto.Source) {
+        db.insertSource(item)
     }
 
     data class SourcesApiState(

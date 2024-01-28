@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.infopulse.base.BaseFragment
 import com.example.infopulse.databinding.FragmentSourcesBinding
+import com.example.infopulse.di.DBModule
 import com.example.infopulse.ui.news.NewsFragmentVM
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -34,6 +35,10 @@ class SourcesFragment : BaseFragment<FragmentSourcesBinding>(
         binding.root.setOnRefreshListener {
             sourcesAdapter.submitList(emptyList())
             observer()
+        }
+
+        sourcesAdapter.onAddToFavouritesClick = {
+            viewModel.saveSource(it)
         }
     }
 

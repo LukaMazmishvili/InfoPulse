@@ -14,4 +14,6 @@
     <string name="see_in_browser">See In Browser</string>
     <string name="save_news">Save News</string>
     <string name="remove_article">Remove Article</string>
+    <string name="add_to_favourites">Add To Favourites</string>
+    <string name="remove_from_favourites">Remove From Favourites</string>
 </resources>

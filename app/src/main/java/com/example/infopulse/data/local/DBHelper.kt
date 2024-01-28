@@ -93,7 +93,7 @@ class DBHelper @Inject constructor(applicationContext: Context) :
             SourcesEntry.TABLE_NAME,
             null,
             values,
-            SQLiteDatabase.CONFLICT_IGNORE
+            SQLiteDatabase.CONFLICT_REPLACE
         )
         db.close()
     }
@@ -110,7 +110,7 @@ class DBHelper @Inject constructor(applicationContext: Context) :
             put(NewsEntry.COLUMN_CONTENT, news.content)
         }
 
-        db.insertWithOnConflict(NewsEntry.TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_IGNORE)
+        db.insertWithOnConflict(NewsEntry.TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE)
         db.close()
     }
 
