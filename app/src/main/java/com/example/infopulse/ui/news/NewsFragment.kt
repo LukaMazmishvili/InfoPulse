@@ -25,6 +25,7 @@ import com.example.infopulse.base.BaseFragment
 import com.example.infopulse.databinding.FragmentNewsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -39,6 +40,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent?.action == NOTIFICATION_ACTION) {
                 showNotification()
+
             }
         }
     }
@@ -83,8 +85,8 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(
     private fun showNotification() {
         val builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
             .setSmallIcon(R.drawable.baseline_add_alert_24)
-            .setContentTitle("Your Notification Title")
-            .setContentText("Your Notification Message")
+            .setContentTitle("InfoPulse")
+            .setContentText("News Saved !")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         with(NotificationManagerCompat.from(requireContext())) {
@@ -103,6 +105,11 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(
                 return
             }
             notify(1, builder.build())
+
+            lifecycleScope.launch {
+                delay(2500) // 2 seconds delay
+                cancel(1)   // Cancel the notification with ID 1
+            }
         }
     }
 

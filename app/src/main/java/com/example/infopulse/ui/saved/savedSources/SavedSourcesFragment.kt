@@ -40,7 +40,7 @@ class SavedSourcesFragment :
     override fun listeners() {
         adapter.onDeleteItemClicked = { item ->
             val builder = AlertDialog.Builder(requireActivity())
-            builder.setTitle("Delete News!")
+            builder.setTitle("Remove Article From Favourites?")
             builder.setMessage("Are you sure?")
             builder.setIcon(android.R.drawable.ic_dialog_alert)
 

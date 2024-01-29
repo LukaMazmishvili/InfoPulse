@@ -14,12 +14,6 @@
         android:iconTint="@color/black"/>
 
     <item
-        android:id="@+id/searchFragment"
-        android:title="Search"
-        android:icon="@drawable/ic_search"
-        android:iconTint="@color/black" />
-
-    <item
         android:id="@+id/savedFragment"
         android:title="Saved"
         android:icon="@drawable/ic_saved"

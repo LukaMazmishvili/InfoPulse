@@ -39,20 +39,4 @@ class SourcesAdapter :
         holder.bind(item)
     }
 
-//    class SourcesDiffUtil() : DiffUtil.ItemCallback<SourcesModelDto.Source>() {
-//        override fun areItemsTheSame(
-//            oldItem: SourcesModelDto.Source,
-//            newItem: SourcesModelDto.Source
-//        ): Boolean {
-//            return oldItem === newItem
-//        }
-//
-//        override fun areContentsTheSame(
-//            oldItem: SourcesModelDto.Source,
-//            newItem: SourcesModelDto.Source
-//        ): Boolean {
-//            return oldItem == newItem
-//        }
-//    }
-
 }

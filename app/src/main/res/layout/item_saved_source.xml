@@ -59,6 +59,7 @@
             android:textStyle="italic"/>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRemoveSource"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/remove_from_favourites"

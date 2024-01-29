@@ -15,7 +15,7 @@ class DBHelper @Inject constructor(applicationContext: Context) :
 
     companion object {
         const val DATABASE_NAME = "Saved.db"
-        const val DATABASE_VERSION = 1
+        const val DATABASE_VERSION = 2
     }
 
     object SourcesEntry : BaseColumns {
@@ -45,7 +45,7 @@ class DBHelper @Inject constructor(applicationContext: Context) :
         val createSourcesTable = """
             CREATE TABLE ${SourcesEntry.TABLE_NAME} (
                 ${BaseColumns._ID} INTEGER PRIMARY KEY,
-                ${SourcesEntry.COLUMN_SOURCE_ID} TEXT,
+                ${SourcesEntry.COLUMN_SOURCE_ID} TEXT UNIQUE,
                 ${SourcesEntry.COLUMN_SOURCE_NAME} TEXT,
                 ${SourcesEntry.COLUMN_DESCRIPTION} TEXT,
                 ${SourcesEntry.COLUMN_URL} TEXT,
@@ -60,7 +60,7 @@ class DBHelper @Inject constructor(applicationContext: Context) :
             CREATE TABLE ${NewsEntry.TABLE_NAME} (
                 ${BaseColumns._ID} INTEGER PRIMARY KEY,
                 ${NewsEntry.COLUMN_AUTHOR} TEXT,
-                ${NewsEntry.COLUMN_TITLE} TEXT,
+                ${NewsEntry.COLUMN_TITLE} TEXT UNIQUE,
                 ${NewsEntry.COLUMN_DESCRIPTION} TEXT,
                 ${NewsEntry.COLUMN_URL} TEXT,
                 ${NewsEntry.COLUMN_URL_TO_IMAGE} TEXT,
@@ -93,7 +93,7 @@ class DBHelper @Inject constructor(applicationContext: Context) :
             SourcesEntry.TABLE_NAME,
             null,
             values,
-            SQLiteDatabase.CONFLICT_REPLACE
+            SQLiteDatabase.CONFLICT_IGNORE
         )
         db.close()
     }
@@ -110,7 +110,7 @@ class DBHelper @Inject constructor(applicationContext: Context) :
             put(NewsEntry.COLUMN_CONTENT, news.content)
         }
 
-        db.insertWithOnConflict(NewsEntry.TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE)
+        db.insertWithOnConflict(NewsEntry.TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_IGNORE)
         db.close()
     }
 

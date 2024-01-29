@@ -20,12 +20,12 @@ class SavedSourcesAdapter : ListAdapter<SourcesModelDto.Source, SavedSourcesAdap
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: SourcesModelDto.Source) {
-            with(binding){
+            with(binding) {
                 tvCategory.text = item.category
                 tvSourceName.text = item.name
                 tvDescription.text = item.description
                 tvCountryAndLang.text = "${item.country}/${item.language}"
-                root.setOnClickListener {
+                btnRemoveSource.setOnClickListener {
                     onDeleteItemClicked?.invoke(item)
                 }
             }
